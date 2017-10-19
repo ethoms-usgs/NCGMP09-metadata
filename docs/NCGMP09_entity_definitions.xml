@@ -24,7 +24,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -32,7 +32,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -48,7 +48,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -76,7 +76,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -96,7 +96,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -104,7 +104,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -145,6 +145,8 @@
           <edomvd>Yes, the contact or fault is overlain by a map unit</edomvd>
           <edomvds>NCGMP09 v1.1</edomvds>
         </edom>
+      </attrdomv>
+      <attrdomv>
         <edom>
           <edomv>n</edomv>
           <edomvd>No, the contact or fault is not overlain by a map unit</edomvd>
@@ -167,7 +169,7 @@
       <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -175,7 +177,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -183,7 +185,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -199,7 +201,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -222,7 +224,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -253,7 +255,7 @@
       <attrdef>Plain-text short description that identifies the data source.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -261,7 +263,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -289,7 +291,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -297,7 +299,7 @@
       <attrdef>Name of map unit, as shown in boldface in traditional DMU, e.g., "Shnabkaib Member". Identifies unit within its hierarchical context.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -305,7 +307,7 @@
       <attrdef>Name of map unit including identification of containing higher rank unit(s), e.g., "Shnabkaib Member of Moenkopi Formation".</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -313,7 +315,7 @@
       <attrdef>May be interpreted (preferred) age calculated from geochronological analysis, not necessarily the date calculated from a single set of measurements.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -321,12 +323,12 @@
       <attrdef>Free-format text description of map unit. Commonly structured according to one or more accepted traditions (e.g., lithology, thickness, color, weathering and outcrop characteristics, distinguishing features, genesis, age constraints) and terse.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
       <attrlabl>GeneralLithology</attrlabl>
-      <attrdef>Categorization of map unit based on lithologic and genetic character, term selected from NGMDB standard term list.</attrdef>
+      <attrdef>Categorization of map unit based on lithologic and genetic character, term selected from NGMDB GeneralLithology term list.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
     </attr>
     <attr>
@@ -339,7 +341,7 @@
       <attrdef>String that records hierarchical structure. Has form nn-nn-nn, nnn-nnn, or similar. Numeric, left-padded with zeros, dash-delimited. Each HierarchyKey fragment of each row MUST be the same length to allow text-based sorting of the DMU entries.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -352,7 +354,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -360,7 +362,7 @@
       <attrdef>{Red, Green, Blue} tuples that specify the suggested color (e.g., "255,255,255", "124,005,255") of area fill for symbolizing MapUnit. Each color value is an integer between 0 and 255, values are zero-padded to a length of 3 digits, and values are separated by commas with no space: NNN,NNN,NNN.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -368,7 +370,7 @@
       <attrdef>Text description (e.g., "random small red dashes") provided as a convenience for users who must recreate symbolization.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -384,7 +386,7 @@
       <attrdef>Numeric code for the map unit as defined within the USGS National Surveys and Analysis compilation of geologic mapping for the state of Alaska. HTML queries for pages describing most of the NSACLASS values can be constructed by appending the value to the url http://mrdata.usgs.gov/geology/state/ak/akgeo-unit.php?unit=</attrdef>
       <attrdefs>National Surveys and Analysis Alaska project (http://minerals.usgs.gov/alaska/surveys/index.html)</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -412,7 +414,7 @@
       <attrdef>Foreign key to Stations point feature class.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -425,7 +427,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -433,7 +435,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -441,7 +443,7 @@
       <attrdef>Place name or brief description of the collection locality</attrdef>
       <attrdefs>This study. Not a field required by NCGMP09 v 1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -449,7 +451,7 @@
       <attrdef>The rock or material type of the hand sample from which the MaterialAnalyzed was extracted</attrdef>
       <attrdefs>This study. Not a field required by NCGMP09 v 1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -457,7 +459,7 @@
       <attrdef>Sample ID given at time of collection.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -465,7 +467,7 @@
       <attrdef>Museum #, lab #, etc.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -473,7 +475,7 @@
       <attrdef>Earth-material which was analyzed, e.g., wood, shell, zircon, basalt, whole-rock.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -481,7 +483,7 @@
       <attrdef>At what scale (or larger) should this observation or analysis be plotted? At smaller scales, it should not be plotted. Useful to prevent crowding of display at small scales and to display progressively more data at larger and larger scales. Value is scale denominator.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -489,7 +491,7 @@
       <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -497,7 +499,7 @@
       <attrdef>May be interpreted (preferred) age calculated from geochronological analysis, not necessarily the date calculated from a single set of measurements.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -505,7 +507,7 @@
       <attrdef>Positive (older) age error, measured in AgeUnits. Type of error (RMSE, 1 sigma, 2 sigma, 95% confidence limit) should be stated in Notes field.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -513,7 +515,7 @@
       <attrdef>Negative (younger) age error, measured in AgeUnits. Type of error (RMSE, 1 sigma, 2 sigma, 95% confidence limit) should be stated in Notes field.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -542,7 +544,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -575,6 +577,8 @@
           <edomvd>Yes, the contact or fault is overlain by a map unit</edomvd>
           <edomvds>NCGMP09 v1.1</edomvds>
         </edom>
+      </attrdomv>
+      <attrdomv>
         <edom>
           <edomv>n</edomv>
           <edomvd>No, the contact or fault is not overlain by a map unit</edomvd>
@@ -597,7 +601,7 @@
       <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database. -9 = 'unknown or unspecified'</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -605,7 +609,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -613,7 +617,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -629,7 +633,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -652,7 +656,7 @@
       <attrdef>Plain-language word for a concept. Values must be unique within database as a whole.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -660,7 +664,7 @@
       <attrdef>Plain-language definition of Term.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -701,7 +705,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -709,7 +713,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -717,7 +721,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -725,7 +729,7 @@
       <attrdef>Numeric code for the map unit as defined within the USGS National Surveys and Analysis compilation of geologic mapping for the state of Alaska. HTML queries for pages describing most of the NSACLASS values can be constructed by appending the value to the url http://mrdata.usgs.gov/geology/state/ak/akgeo-unit.php?unit=</attrdef>
       <attrdefs>National Surveys and Analysis Alaska project (http://minerals.usgs.gov/alaska/surveys/index.html)</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -761,7 +765,7 @@
       <attrdef>Foreign key to Stations point feature class.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -774,7 +778,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -782,7 +786,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -790,7 +794,7 @@
       <attrdef>At what scale (or larger) should this observation or analysis be plotted? At smaller scales, it should not be plotted. Useful to prevent crowding of display at small scales and to display progressively more data at larger and larger scales. Value is scale denominator.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -798,7 +802,7 @@
       <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -835,7 +839,7 @@
       <attrdef>Estimated angular precision of combined azimuth AND inclination measurements, in degrees.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -859,7 +863,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -887,7 +891,7 @@
       <attrdef>Foreign key to Stations point feature class (unused in this database)</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -900,7 +904,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -908,7 +912,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -916,7 +920,7 @@
       <attrdef>Sample ID given at time of collection.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -924,7 +928,7 @@
       <attrdef>Museum #, lab #, etc. Used in this case as a foreign key to a number on the published map, e.g. 'F1', F2', etc.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -932,7 +936,7 @@
       <attrdef>Earth-material which was analyzed, e.g., wood, shell, zircon, basalt, whole-rock.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -940,7 +944,7 @@
       <attrdef>At what scale (or larger) should this observation or analysis be plotted? At smaller scales, it should not be plotted. Useful to prevent crowding of display at small scales and to display progressively more data at larger and larger scales. Value is scale denominator.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -948,7 +952,7 @@
       <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database. -9 = 'unknown or unspecified'</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary with the exception of -9 = 'unknown or unspecified'</udom>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -956,7 +960,7 @@
       <attrdef>The fossil species, type, in-situ description, etc.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -964,7 +968,7 @@
       <attrdef>Geologic age of fossil</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -996,7 +1000,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -1029,7 +1033,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1037,7 +1041,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1045,7 +1049,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1081,7 +1085,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1089,7 +1093,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1097,7 +1101,7 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>
@@ -1120,7 +1124,7 @@
       <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1128,7 +1132,7 @@
       <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Matches a symbol name in an ESRI style file</udom>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
       </attrdomv>
     </attr>
     <attr>
@@ -1136,7 +1140,192 @@
       <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
       <attrdefs>NCGMP09 v1.1</attrdefs>
       <attrdomv>
-        <udom>Values not controlled by an NCGMP09 v 1.1 vocabulary</udom>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+  </detailed>
+  <detailed>
+    <enttyp>
+      <enttypl>Stations</enttypl>
+      <enttypd>Point locations of field observations and (or) samples.</enttypd>
+      <enttypds>NCGMP09 v1.1</enttypds>
+    </enttyp>
+    <attr>
+      <attrlabl>Field_ID</attrlabl>
+      <attrdef>Identifier assigned by person who originally located station, for example, DRS09-234. Commonly a key to a field sheet and (or) field notebook</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>Type</attrlabl>
+      <attrdef>Classifier that specifies what kind of geologic feature is represented by a database element: that a certain line within feature class ContactsAndFaults is a contact, or thrust fault, or water boundary; or that a point in GeochronPoints represents a K-Ar date. Not used in this table in this study</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+    </attr>
+    <attr>
+      <attrlabl>ObservedMapUnit</attrlabl>
+      <attrdef>The map unit identified in the field (or interpreted from remote sensing) as outcropping at the station. May be a foreign key to DescriptionOfMapUnits. Null values OK</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain. Free text.</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>MapUnit</attrlabl>
+      <attrdef>Short plain-text identifier of the map unit. Foreign key to DescriptionOfMapUnits table.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+    </attr>
+    <attr>
+      <attrlabl>Symbol</attrlabl>
+      <attrdef>Reference to a point marker, line symbol, or area-fill symbol that is used on the map graphic to denote the feature: perhaps a star for a K-Ar age locality, or a heavy black line for a fault.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Matches a symbol name in an ESRI style file or layer file</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>Label</attrlabl>
+      <attrdef>Plain-text equivalent of the desired annotation for a feature: for example "14 Ma", or "^c" which (when used with the FGDC GeoAge font) results in the geologic map-unit label TRc (with TR run together to make the Triassic symbol).</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>PlotAtScale</attrlabl>
+      <attrdef>At what scale (or larger) should this observation or analysis be plotted? At smaller scales, it should not be plotted. Useful to prevent crowding of display at small scales and to display progressively more data at larger and larger scales. Value is scale denominator.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>LocationConfidenceMeters</attrlabl>
+      <attrdef>Estimated half-width in meters of positional uncertainty envelope; position is relative to other features in database. -9 = 'unknown or unspecified'</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain with the exception of -9 = 'unknown or unspecified'</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>LocationMethod</attrlabl>
+      <attrdef>Term that categorizes technique used to determine station location. Example values = Recreational GPS, Survey grade GPS, By inspection, By offset. Terms must be defined in Glossary table.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>TimeDate</attrlabl>
+      <attrdef>Time and date of observation at station</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>Observer</attrlabl>
+      <attrdef>Name of the person who located station</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>MAPX</attrlabl>
+      <attrdef>Station coordinate (easting) as compiled on the base map; base map should be identified in the DataSources record</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>MAPY</attrlabl>
+      <attrdef>Station coordinate (northing) as compiled on the base map; base map should be identified in the DataSources record</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>DataSourceID</attrlabl>
+      <attrdef>Source of data; foreign key to table DataSources.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Matches a DataSources_ID value in DataSources</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>Notes</attrlabl>
+      <attrdef>Additional information specific to a particular feature or table entry.</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>Stations_ID</attrlabl>
+      <attrdef>Arbitrary string. Values should be unique within this database</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Generated by concatenation of abbreviation of the table name and OBJECTID</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>StratSection</attrlabl>
+      <attrdef>Value indicates whether a stratigraphic section was measured at the station. The default value, NULL, indicates no and -1 indicates yes</attrdef>
+      <attrdefs>This study</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>LocationDescription</attrlabl>
+      <attrdef>Brief description of the station location</attrdef>
+      <attrdefs>This study</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain. Free text.</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>CompileNotes</attrlabl>
+      <attrdef>Comments made by Evan Thoms during data compilation</attrdef>
+      <attrdefs>This study</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain. Free text.</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>SignificantDimensionMeters</attrlabl>
+      <attrdef>Significant dimension of exposure (for example, thickness of stratigraphic section, depth of auger hole, or least diameter of outcrop), in meters. Null values OK</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>GPSX</attrlabl>
+      <attrdef>Measured GPS coordinate (easting). May differ from map coordinate because of GPS error or (more likely) base map error</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>GPSY</attrlabl>
+      <attrdef>Measured GPS coordinate (northing). May differ from map coordinate because of GPS error or (more likely) base map error</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
+      </attrdomv>
+    </attr>
+    <attr>
+      <attrlabl>PDOP</attrlabl>
+      <attrdef>Data type=float. Predicted Dilution Of Precision; an estimator of GPS accuracy</attrdef>
+      <attrdefs>NCGMP09 v1.1</attrdefs>
+      <attrdomv>
+        <udom>Unrepresentable domain</udom>
       </attrdomv>
     </attr>
   </detailed>

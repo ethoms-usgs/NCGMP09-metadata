@@ -40,7 +40,7 @@ def pPrint(text):
     arcpy.AddMessage(text)
     
     
-def __buildWhereClause(table, field, value):
+def buildWhereClause(table, field, value):
     """Constructs a SQL WHERE clause to select rows having the specified value
     within a given field and table. Uses field delimiters to determine the proper
     syntax for any data source and field type"""
@@ -59,7 +59,7 @@ def __buildWhereClause(table, field, value):
     whereClause = "%s = %s" % (fieldDelimited, value)
     return whereClause
     
-def __tableList(gdb):   
+def tableList(gdb):   
     """"Returns a list of (name, catalog path) tuples for all tables and feature classes in an ESRI gdb"""
 	
     arcpy.env.workspace = gdb
@@ -88,13 +88,12 @@ def __tableList(gdb):
             tables.append([desc.name, desc.catalogPath])
     return tables
 
-def __exportMD():   
+def exportMD(gdb):   
     """"Export FGDC XML metadata file for each gdb object
         Collect a list of the paths to these files for later use"""
-
     xmls = []
-    #__tableList returns instances of all feature classes and standalone tables
-    for dsPath in __tableList(gdb):
+    #objList is a list of all feature classes and standalone tables and their paths
+    for dsPath in tableList(gdb):
         table = dsPath[0] #name of the table
         path = dsPath[1]  #catalogPath of the table
         fXML = os.path.join(outDir, table + '.xml')
@@ -110,13 +109,19 @@ def __exportMD():
 		
     return xmls
 
-def __importMD(source, objName): 
+def importMD(gdb): 
     """Import XML back into the target feature class or table."""
-	
-    target = os.path.join(gdb, objName)
-    arcpy.env.MetadataImporter_conversion(source, target)
+    for dsPath in tableList(gdb):
+        table = dsPath[0]
+        target = dsPath[1]
+        source = os.path.join(outDir, table + '.xml')
+        if os.path.exists(source):
+            pPrint(source)
+            arcpy.ImportMetadata_conversion(source, "FROM_FGDC", target)
+        else:
+            pPrint("Could not find a metadata file for \n %s" % target)
     
-def __parentFolder(gdbPath):  
+def parentFolder(gdbPath):  
     """Return the parent folder path of an ArcCatalog object.
        Queries dataType because objects within feature datasets have paths
        which are delimited as if they were system folders when they are not"""
@@ -126,7 +131,7 @@ def __parentFolder(gdbPath):
         pFolder = os.path.split(pFolder)[0]
     return pFolder
 
-def __fieldNameList(table):    
+def fieldNameList(table):    
     """Returns a list of field names from input table that are also in the list of NCGMP09 controlled fields"""
 	
     fldList = arcpy.ListFields(table)
@@ -136,10 +141,10 @@ def __fieldNameList(table):
             nameList.append(fld.name)
     return nameList
 
-def __findSourceRef(sourceID):
+def findSourceRef(sourceID):
     """Finds the source reference for each DataSource_ID"""
 	
-    query = __buildWhereClause(dataSources, "DataSources_ID", sourceID)
+    query = buildWhereClause(dataSources, "DataSources_ID", sourceID)
     rows = arcpy.da.SearchCursor(dataSources, ["Source"], query)
     try:
         row = rows.next()
@@ -147,7 +152,7 @@ def __findSourceRef(sourceID):
     except:
         return ""
 
-def __updateDomains(table, fldList, fcXML):
+def updateDomains(table, fldList, fcXML):
     """1) Finds all controlled-vocabulary fields in the table sent to it
        2) Builds a set of unique terms in each field, ie, the domain
        3) Matches each domain value to an entry in the glossary
@@ -175,7 +180,7 @@ def __updateDomains(table, fldList, fcXML):
         #Map Units are a special case because their definition is not in the Glossary but the DMU
         if fld == 'MapUnit':
             for unit in termList:
-                query = __buildWhereClause(DMU, fld, unit)
+                query = buildWhereClause(DMU, fld, unit)
                 rows = arcpy.da.SearchCursor(DMU, ["FullName", "DescriptionSourceID"], query)
                 try:
                     row = rows.next()
@@ -183,21 +188,21 @@ def __updateDomains(table, fldList, fcXML):
                     #this is how we will enumerate through the enumerated_domain section
                     defs[unit] = []
                     defs[unit].append(row[0])
-                    defs[unit].append(__findSourceRef(row[1]))
+                    defs[unit].append(findSourceRef(row[1]))
                     
                 #otherwise, add the term to the cantfind list 
                 except:
                     cantfind.append(unit)
         elif fld == 'DataSourceID':
             for das in termList:
-                query = __buildWhereClause(dataSources, 'DataSources_ID', das)
+                query = buildWhereClause(dataSources, 'DataSources_ID', das)
                 rows = arcpy.da.SearchCursor(dataSources, ["DataSources_ID", "Source"], query)
                 try:
                     row = rows.next()
                     #create an entry in the dictionary of term:[definition, source] key:value pairs
                     #this is how we will enumerate through the enumerated_domain section
                     defs[das] = []
-                    defs[das].append(row[0])
+                    defs[das].append(row[1])
                     defs[das].append('This study')
                     
                 #otherwise, add the term to the cantfind list 
@@ -206,7 +211,7 @@ def __updateDomains(table, fldList, fcXML):
         else:
             for term in termList:
                 #pull a term from the values in the controlled field
-                query = __buildWhereClause(glossary, "Term", term)
+                query = buildWhereClause(glossary, "Term", term)
                 #search for that term in the Glossary
                 rows = arcpy.da.SearchCursor(glossary, ["Definition", "DefinitionSourceID"], query)
 
@@ -216,7 +221,7 @@ def __updateDomains(table, fldList, fcXML):
                     row = rows.next()
                     defs[term] = []
                     defs[term].append(row[0])
-                    defs[term].append(__findSourceRef(row[1]))
+                    defs[term].append(findSourceRef(row[1]))
                     
                 #otherwise, add the term to the cantfind list 
                 except:
@@ -233,30 +238,17 @@ def __updateDomains(table, fldList, fcXML):
         #write these definitions to the XML tree
         #work on this
         #root = ET.parse(fcXML).getroot()
-        #tree = ET.ElementTree(__writeFieldDomain(fld, defs, dom))
+        #tree = ET.ElementTree(writeFieldDomain(fld, defs, dom))
         
-        dom = __writeFieldDomain(fld, defs, dom)
+        dom = writeFieldDomain(fld, defs, dom)
                 
         #save the xml file
         dom.saveXML
         outf = open(fcXML, 'w')
         dom.writexml(outf)
         outf.close()
-
-#def __writeFieldDomain2(fld, defs, dom):
-    ##element tag names are
-    ## attr             = Attribute
-    ## attrlabl         = Attribute_Label
-    ## attrdomv         = Attribute_Domain_Values
-    ## edom             = Enumerated_Domain
-    ## edomv            = Enumerated_Domain_Value
-    ## edomd            = Enumerated_Domain_Definition
-    ## edomvds          = Enumerated_Domain_Value_Definition_Source
-    #sortedDefs
-    #labelNodes = root.iter
-
     
-def __writeFieldDomain(fld, defs, dom):  
+def writeFieldDomain(fld, defs, dom):  
     """Write the term:(definition, source) items to elements in the metadata XML.
        Currently uses xml.dom.minidom. Should update this to ElementTree!"""
     ##element tag names are
@@ -272,7 +264,13 @@ def __writeFieldDomain(fld, defs, dom):
     for attrlabl in labelNodes:
         if attrlabl.firstChild.data == fld:
             attr = attrlabl.parentNode
-            attrdomv = dom.createElement('attrdomv')
+            #if attrdomv exists in this node, remove it.
+            #it would get written there because there is a placeholder for it in 
+            #NCGMP09_entity_definitions.xml in case no enumerated domain values are found
+            if not len(attr.getElementsByTagName('attrdomv')) == 0:
+                attr.removeChild(attr.getElementsByTagName('attrdomv')[0])
+             
+            #attrdomv = dom.createElement('attrdomv')
             #for k in defs.iteritems():
             for key in sorted(defs):
                 edom = dom.createElement('edom')
@@ -295,24 +293,29 @@ def __writeFieldDomain(fld, defs, dom):
                 edom.appendChild(edomv)
                 edom.appendChild(edomvd)
                 edom.appendChild(edomvds)
-                                
+                
+                #append enumerated domain to an attribute domain values node
+                attrdomv = dom.createElement('attrdomv')
                 attrdomv.appendChild(edom)
                 
-            #if attrdomv exists in this node, replace it
-            if not len(attr.getElementsByTagName('attrdomv')) == 0:
-                attr.replaceChild(attrdomv, attr.getElementsByTagName('attrdomv')[0])
-            #else append it
-            else:
+                # append attribute domain values node to attribute node
                 attr.appendChild(attrdomv)
+                
+            # #if attrdomv exists in this node, replace it
+            # if not len(attr.getElementsByTagName('attrdomv')) == 0:
+                # attr.replaceChild(attrdomv, attr.getElementsByTagName('attrdomv')[0])
+            # #else append it
+            # else:
+                # attr.appendChild(attrdomv)
                 
     return dom
                 
-def __addAttributeDomains():  
+def addAttributeDomains():  
     """Control flow function for exporting metadata and updating field domains"""
 
     #For each table in the list, collect the name, the list of controlled fields, and then
     #populate the attribute domains from the Glossary
-    for dsPath in __tableList(gdb):
+    for dsPath in tableList(gdb):
         table = dsPath[0]
         path = dsPath[1]
 		
@@ -321,15 +324,15 @@ def __addAttributeDomains():
         #just to be sure it can be located
         #Should we get this list from the exported XML with ElementTree instead
         #of arcpy? Would probably be faster...
-        fldNameList = __fieldNameList(path)
+        fldNameList = fieldNameList(path)
         
 		#we JUST made an xml file for this object so the file had better be there!
         mdXML = os.path.join(outDir, table + '.xml')
 		
         #update the 'domains' (entity, attribute pairs for those controlled fields)
-        __updateDomains(path, fldNameList, mdXML)
+        updateDomains(path, fldNameList, mdXML)
 
-def __addTemplateItems():
+def addTemplateItems():
     """Takes a list of metadata elements from a template XML and migrates 
        them to all FGDC metadata XML files in the output folder"""
 
@@ -347,11 +350,13 @@ def __addTemplateItems():
         if root.tag == 'metadata':
             #remove the existing elements
             for elementName in templateElements:
-                if root.find(elementName):
+                #if root.find(elementName) is not None:
+                if root.find(elementName): 
                     root.remove(root.find(elementName))
-            #now insert the copies from the template
-            #need to go trough one by one because two of the elements we insert by index
-            #and the other two we simply append in order to maintain the FGDC order
+
+                #now insert the copies from the template
+                #need to go trough one by one because two of the elements we insert by index
+                #and the other two we simply append in order to maintain the FGDC order
                 copyElem = copy.deepcopy(tempDoc.find(elementName))
                 if elementName == 'idinfo':
                     root.insert(0, copyElem)
@@ -368,9 +373,11 @@ def __addTemplateItems():
             raise SystemError
             
         tree = ET.ElementTree(root)
+        #pPrint(ET.dump(tree))
+        #pPrint(os.path.join(outDir, x))
         tree.write(os.path.join(outDir, x))
 		
-def __getElementDictionary(elemIter):
+def getElementDictionary(elemIter):
     """Makes a dictionary of {Entity or Attribute label: Entity or Attribute element} for items from NCGMP09_field_definitions
        Must be passed a variable created by Element.iter(<value>)"""
     elemDict = {}
@@ -385,7 +392,7 @@ def __getElementDictionary(elemIter):
         elemDict[label] = childDict
     return elemDict
 
-def __addTableFieldDefinitions():
+def addTableFieldDefinitions():
     """Add table and field definitions for (mostly) NCGMP09 controlled tables and fields
        User may add their own definitions for tables and fields which they have added by 
        modifying /docs/NCGMP09_field_definitions.xml"""
@@ -394,7 +401,7 @@ def __addTableFieldDefinitions():
     #can easily search on table name and get a valid ElementTree element to copy later
     defsDoc = ET.parse(NCGMP09_defs)
     tDets = defsDoc.iter('detailed')
-    tDefsDict = __getElementDictionary(tDets)
+    tDefsDict = getElementDictionary(tDets)
 
     #Now go through newly exported XML files:
     for f in xmlList:
@@ -430,25 +437,25 @@ def __addTableFieldDefinitions():
         tree = ET.ElementTree(root)
         tree.write(f)
         
-def __mpXML():
+def mpXML():
     for f in xmlList:
         fName = os.path.splitext(os.path.basename(f))[0]
         outPath = os.path.join(outDir, fName + '_err.txt')
         call([mp, '-e', outPath, f])
         
-def __mpTXT():
+def mpTXT():
     for f in xmlList:
         fName = os.path.splitext(os.path.basename(f))[0]
         outPath = os.path.join(outDir, fName + '_meta.txt')
         call([mp, '-t', outPath, f])
         
-def __mpFAQ():
+def mpFAQ():
     for f in xmlList:
         fName = os.path.splitext(os.path.basename(f))[0]
         outPath = os.path.join(outDir, fName + '_faq.html')
         call([mp, '-f', outPath, f])
         
-def __mpHTML():
+def mpHTML():
     for f in xmlList:
         fName = os.path.splitext(os.path.basename(f))[0]
         outPath = os.path.join(outDir, fName + '_meta.html')
@@ -466,8 +473,8 @@ outList = sys.argv[5]
 outDir = sys.argv[6]	#path
 
 #global variables
-arcpy.env.workspace = gdb   
-gdbFolder = __parentFolder(gdb)
+arcpy.env.workspace = gdb
+gdbFolder = parentFolder(gdb)
 glossary = os.path.join(gdb, 'Glossary')
 dataSources = os.path.join(gdb, 'DataSources')
 DMU = os.path.join(gdb, 'DescriptionOfMapUnits')
@@ -485,41 +492,45 @@ controlledFields =["Type", "MapUnit", "IdentityConfidence", "ExistenceConfidence
 			 
 fcIndex = {'idinfo':0, 'dataqual':1, 'spdoinfo':2, 'spref':3, 'eainfo':4, 'distinfo':5, 'metainfo':6}
 tabIndex = {'idinfo':0, 'dataqual':1, 'eainfo':2, 'distinfo':3, 'metainfo':4}
-templateElements = ['idinfo', 'dataqual','distinfo', 'metainfo']
+templateElements = ['idinfo', 'dataqual', 'distinfo', 'metainfo']
 
 pPrint('NCGMP09_update_md.py')
 pPrint('Geodatabase: %s' % gdb)
 
 #First, export metadata files for all objects in the geodatabase,
 #feature datasets excluded. Get the list of full paths to these files as xmlList
-xmlList = __exportMD()
+xmlList = exportMD(gdb)
+xmlListcopy = xmlList
 
 #if the user wants table and field definitions:
 if addDefs:
     #Create a couple global variables we don't need outside of this option
-    __addTableFieldDefinitions()
+    addTableFieldDefinitions()
 
 #add attribute domain values to the XML files from the Glossary
-__addAttributeDomains()
-
+addAttributeDomains()
+pPrint("Attributes domains added")
 #if a template XML was provided, update the newly exported XML files
 if template:
-    __addTemplateItems()
+    addTemplateItems()
     
+#import the xml files back in to the source feature classes and standalone tables
+importMD(gdb)
+
 #if the user wants the new xmls files validated
 if validate:
-    __mpXML()
+    mpXML()
 
 #if the user wants a plain text version of the metadata
 if 'TXT' in outList:
-    __mpTXT()    
+    mpTXT()    
 
 #if the user wants an HTML version of the metadata
 if 'HTML' in outList:
-    __mpHTML()
+    mpHTML()
     
 #if the user wants an FAQ-formed HTML file
 if 'FAQ' in outList:
-    __mpFAQ()
+    mpFAQ()
 
 pPrint('Done!')
