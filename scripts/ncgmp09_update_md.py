@@ -116,7 +116,7 @@ def importMD(gdb):
         target = dsPath[1]
         source = os.path.join(outDir, table + '.xml')
         if os.path.exists(source):
-            pPrint(source)
+            pPrint("Importing metadata into %s" % target)
             arcpy.ImportMetadata_conversion(source, "FROM_FGDC", target)
         else:
             pPrint("Could not find a metadata file for \n %s" % target)
@@ -159,6 +159,7 @@ def updateDomains(table, fldList, fcXML):
        4) Builds a dictionary of term:(definition, source) items
        5) Takes the dictionary items and put them into the metadata
           document as Attribute_Domain_Values"""
+
     dom = parse(fcXML)
     
     #for each field in fldList (controlled fields)
@@ -239,11 +240,14 @@ def updateDomains(table, fldList, fcXML):
         #work on this
         #root = ET.parse(fcXML).getroot()
         #tree = ET.ElementTree(writeFieldDomain(fld, defs, dom))
-        
+        #pPrint(fld)
+        #pPrint(defs)
+     
         dom = writeFieldDomain(fld, defs, dom)
                 
         #save the xml file
         dom.saveXML
+        pPrint("writing to modified")
         outf = open(fcXML, 'w')
         dom.writexml(outf)
         outf.close()
@@ -502,6 +506,11 @@ pPrint('Geodatabase: %s' % gdb)
 xmlList = exportMD(gdb)
 xmlListcopy = xmlList
 
+#if a template XML was provided, update the newly exported XML files
+pPrint("Adding template items...")
+if template:
+    addTemplateItems()
+
 #if the user wants table and field definitions:
 if addDefs:
     #Create a couple global variables we don't need outside of this option
@@ -510,12 +519,13 @@ if addDefs:
 #add attribute domain values to the XML files from the Glossary
 addAttributeDomains()
 pPrint("Attributes domains added")
-#if a template XML was provided, update the newly exported XML files
-if template:
-    addTemplateItems()
-    
+
 #import the xml files back in to the source feature classes and standalone tables
 importMD(gdb)
+
+#import the template/master metadata back into the gdb
+if template:
+    arcpy.ImportMetadata_conversion(template, "FROM_FGDC", gdb)
 
 #if the user wants the new xmls files validated
 if validate:

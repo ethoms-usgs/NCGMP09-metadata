@@ -12,6 +12,7 @@
 
 import arcpy
 import sys
+import os
              
 def pPrint(text):
     print text
@@ -28,11 +29,12 @@ controlledFields =["Type", "IdentityConfidence", "ExistenceConfidence", "General
              "Qualifier", "Event", "TimeScale", "Lithology", "ProportionValue", "ProportionTerm",
              "AgeUnits"]   
 
-tables = []
-
 arcpy.env.workspace = gdb
+#directory the gdb is in 
+gdb_dir = os.path.dirname(gdb)
 
 #get a list of the tables in the geodatabase
+tables = []
 for tab in arcpy.ListTables():
     tables.append(arcpy.Describe(tab).catalogPath)
 
@@ -51,9 +53,10 @@ for fd in datasets:
     arcpy.env.workspace = fd
     for fc in arcpy.ListFeatureClasses():
         tables.append(arcpy.Describe(fc).catalogPath)
- 
+
 #run through the fields in the feature classes
 #if any are in controlledFields, pull the values and find unique occurrences
+#termList will be a dictionary formatted as term:(table, field)
 termList = []
 for t in tables:
     for fld in arcpy.ListFields(t):
@@ -61,6 +64,8 @@ for t in tables:
             rows = arcpy.da.SearchCursor(t, fld.name)
             for row in rows:
                 if not row[0] in termList and not row[0] == None and not row[0] == "":
+                    s = "Term: {}, Table: {}, Field: {}".format(row[0], os.path.basename(t), fld.name)
+                    pPrint(s)
                     termList.append(row[0])
 
 arcpy.env.workspace = gdb
@@ -74,7 +79,7 @@ for et in arcpy.da.SearchCursor("Glossary", ["Term"]):
 cursor = arcpy.da.InsertCursor("Glossary", ["Term"])
 for newTerm in termList:
     if not newTerm in existingTerms:
-        pPrint("Adding '%s' to Glossary" % newTerm)
+        pPrint("Adding {} to Glossary".format(newTerm))
         cursor.insertRow([newTerm])
     
 pPrint("\nDone")
